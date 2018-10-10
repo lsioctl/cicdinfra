@@ -1,0 +1,28 @@
+- docker in ansible no more easily available
+https://www.ansible.com/blog/six-ways-ansible-makes-docker-compose-better
+
+use docker_service, wich supports compose version 1 and 2 (tocheck: I am using 3?)
+
+- stopped using bind-mount for direct local filesystem
+lots of drawbacks, including needed mapping between container uid and host uid
+https://docs.docker.com/storage/volumes/
+
+- avoid docker in docker :
+https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/
+https://medium.com/@weibeld/docker-in-docker-521958d34efd
+
+- When configuring a source in Docker pipeline on GitHub it tries alone
+to push the hooks for notifications
+
+GitHub Hooks Problems
+
+This page shows problems with webhooks, and ignored projects. A detailed stacktrace for any of the problems can be found in the system log. For improved debugging in the Jenkins interface, enable these logs:
+
+    com.cloudbees.jenkins.GitHubWebHook - ALL
+    org.jenkinsci.plugins.github.webhook.WebhookManager - ALL
+    org.jenkinsci.plugins.github.admin.GitHubHookRegisterProblemMonitor - ALL
+
+This table shows any problems with registering/removing repo webhooks. A message will be dismissed if Jenkins receives a PING event from the corresponding repo webhook, or if you add the repo to the ignore list. These messages will not be saved to disk, so they will all be cleared when Jenkins restarts.
+Project	Message	
+github.com:lsioctl/demo	There is no credentials with admin access to manage hooks on GitHubRepositoryName[host=github.com,username=lsioctl,repository=demo]
+

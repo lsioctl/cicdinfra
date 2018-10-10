@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+
+#  # Git 'server' 
+#  git-server:
+#    image: jkarlos/git-server-docker 
+#    ports:
+#      - "2222:22"
+#    volumes:
+#      - /root/cicdinfra/git-server/repos:/git-server/repos
+#      - /root/cicdinfra/git-server/keys:/git-server/keys
+#    restart: "no"
+
+  # Jenkins server
+  jenkins:
+    #this one as not docker and docker-compose
+    #image: jenkins/jenkins:lts
+    image: trion/jenkins-docker-client
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins:/var/jenkins_home
+      # to be able to launch siblings containers
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: "no"
+ 
+volumes:
+  jenkins:
