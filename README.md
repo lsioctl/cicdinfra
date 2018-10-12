@@ -26,7 +26,7 @@ only container deployments
 
 - My Laptop: Docker Host, Docker client, Docker-Compose, and Ansible (for testing)
 - Jenkins Container: Jenkins2, Docker-Compose, Docker client, Ansible
-- LB Container: Squid.
+- LB Container: Nginx
 
 ## Pre-Requists
 - Docker, Docker-Compose, ideally runned as non root-user

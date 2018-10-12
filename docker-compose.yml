@@ -2,16 +2,6 @@ version: '3'
 
 services:
 
-#  # Git 'server' 
-#  git-server:
-#    image: jkarlos/git-server-docker 
-#    ports:
-#      - "2222:22"
-#    volumes:
-#      - /root/cicdinfra/git-server/repos:/git-server/repos
-#      - /root/cicdinfra/git-server/keys:/git-server/keys
-#    restart: "no"
-
   # Jenkins server
   jenkins:
     #this one as not docker and docker-compose
@@ -30,17 +20,12 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     restart: "no"
 
-  # Prod server
+  # Nginx for Blue/Green Deployments
   prod:
-    #this one as not docker and docker-compose
-    #image: jenkins/jenkins:lts
-    image: tiangolo/uwsgi-nginx-flask:python3.7
+    image: nginx
     ports:
       - "8081:80"
-    volumes:
-      - prod-data:/var/data
     restart: "no"
  
 volumes:
   jenkins:
-  prod-data:
