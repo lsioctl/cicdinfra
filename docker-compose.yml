@@ -21,7 +21,7 @@ services:
     restart: "no"
 
   # Nginx for Blue/Green Deployments
-  prod:
+  nginx:
     image: nginx
     ports:
       - "8081:80"
