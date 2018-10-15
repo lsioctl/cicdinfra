@@ -20,7 +20,7 @@ only container deployments
 - Separate infrastructure deployment (cicdinfra) and application (demo) deployment
 - Use of Declarative Pipeline (vs Scripted) in Jenkins. Because it is recommended. Even if its not yet widely used.
 - Use Ansible to reduce the DSL in Jenkins Pipeline.
-- Blue/Green App deployment
+- Blue/Green App deployment, or Rolling Update
 
 ### Infrastructure
 
@@ -41,4 +41,9 @@ docker build -t 'lsioctl/jenkins-docker-ansible' ./
 - Launch Jenkins and the LB with docker-compose
 ```
 docker-compose up
+```
+
+- For one type of deployment (Rolling Update), we will use Swarm mode
+```
+docker swarm init
 ```
