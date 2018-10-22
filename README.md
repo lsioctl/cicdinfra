@@ -35,8 +35,14 @@ only container deployments
 
 - build the Jenkins image with Docker and Ansible (not found one suitable)
 ```
-docker build -t 'lsioctl/jenkins-docker-ansible' ./
+docker build -t 'lsioctl/jenkins-docker-ansible' -f Dockerfile-Jenkins .
 ```
+
+- build the Nginx image with Python (for ansible)
+```
+docker build -t 'lsioctl/nginx' -f Dockerfile-Nginx .
+```
+
 
 - Launch Jenkins and the LB with docker-compose
 ```
