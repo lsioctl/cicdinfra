@@ -18,14 +18,22 @@ services:
       - jenkins:/var/jenkins_home
       # to be able to launch siblings containers
       - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - front
     restart: "no"
 
   # Nginx for Blue/Green Deployments
   nginx:
-    image: nginx
+    image: lsioctl/nginx
     ports:
       - "8081:80"
+    networks:
+      - front
     restart: "no"
  
 volumes:
   jenkins:
+  prod-data:
+
+networks:
+  front:
